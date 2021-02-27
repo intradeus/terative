@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Terative</title>
+    <script src="./pace.js"></script>
+    <script>$ = require('jquery');</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src data: https://cdnjs.cloudflare.com; connect-src https://oauth2.googleapis.com"/>
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';img-src cdnjs.cloudflare.com"/>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css"/>
+    <script src="./node_modules/tinymce/tinymce.min.js"></script>
+    <script>
+      Pace.on("done", function(){
+         $(".cover").fadeOut(300);
+     });
+    </script>
+  </head>
+  <body>
+    <div class="cover"></div>
+    <div class="d-flex h-100">
+      <div class="h-100 pt-3 pb-3 w-100 pr-5 pl-5">
+        <div class="row ">
+          <div class="col">
+              <button id="returnButton" class="btn btn-outline-secondary"><em class="ml-2 mr-2 fa fa-angle-left"></em></button>
+          </div>
+          <div class="col">
+            <h2 id="settingsTitle" class="ml-3 mr-2 font-weight-bold text-center"></h2>
+          </div>
+          <div class="w-30 text-right">
+              <button id="saveSettingsButton" class="btn btn-primary"><em class="ml-2 mr-2 fa fa-save"></em> </button>
+          </div>
+        </div>
+        <div class="message-container ">
+            <div id="danger" class="alert alert-danger hidden">
+              <div class="d-flex justify-content-between">
+                <span id="dangerMessage"></span> 
+                <button class="astext" id="btnDanger"><em class="fa fa-times"></em></button>
+              </div>
+            </div>
+            <div id="success" class="alert alert-success hidden">
+              <div class="d-flex justify-content-between">
+                <span id="successMessage"></span>
+                <button class="astext" id="btnSuccess"><em class="fa fa-times"></em></button>
+              </div>
+            </div>
+        </div>
+        <div class="tabs">
+          <div id="generalTab" class="col tablinks active first"><p id="generalTabLabel"></p></div>
+          <div id="emailTab" class="col tablinks"><p id="emailTabLabel"></p></div>
+          <div id="servicesTab" class="col tablinks"><p id="servicesTabLabel"></p></div>
+          <div id="taxesTab" class="col tablinks "><p id="taxesTabLabel"></p></div>
+          <div id="settingsTab" class="col tablinks last"><p id="settingsTabLabel"></p></div>
+        </div>
+        <div id="generalTabItem" class="tabcontent first-tab">
+          <label id="sellerNameLabel" for="sellerName"></label>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="sellerName"
+              aria-describedby="basic-addon2"
+            />
+          </div>
+          <label id="sellerTitleLabel" for="sellerTitle"></label>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="sellerTitle"
+              aria-describedby="basic-addon2"
+              
+            />
+          </div>
+          <label id="registrationIDLabel" for="registrationID"></label>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="registrationID"
+              aria-describedby="basic-addon2"
+            />
+          </div>
+          <label id="sellerAddressLabel" for="sellerAddress"></label>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="sellerAddress"
+              aria-describedby="basic-addon2"
+              
+            />
+          </div>
+          <label id="sellerPhoneLabel" for="sellerPhone"></label>
+          <div class="input-group mb-3">
+            <input
+              type="tel"
+              class="form-control"
+              id="sellerPhone"
+              aria-describedby="basic-addon2"
+              
+            />
+          </div>
+          <label id="sellerEmailLabel" for="sellerEmail"></label>
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="sellerEmail"
+              aria-describedby="basic-addon2"
+              
+            />
+          </div>
+          <label id="filepathLabel" for="filepath"></label>
+          <div class="input-group mb-3">
+            <input
+              id="filepath"
+              class="form-control"
+              type="text"
+              aria-describedby="basic-addon2"
+              required
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                id="chooseDirectory"
+                type="button"
+              >
+              </button>
+            </div>
+          </div>
+          <label id="signatureLabel" for="signature"></label>
+          <div class="input-group mb-3">
+            <div>
+              <img alt="signature" class="signature-image" id="signatureImg">
+            </div>
+            <input
+              id="signature"
+              class="form-control hidden"
+              type="text"
+              placeholder="Lien image signature"
+              aria-describedby="basic-addon2"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                id="chooseSignature"
+                type="button"
+              >
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="emailTabItem" class="tabcontent">
+          <label id="subjectTemplateLabel" for="subjetTemplate"></label>
+          <div class="input-group mb-3">
+            <input
+              id="subjetTemplate"
+              class="form-control"
+              type="text"
+              aria-describedby="basic-addon2"
+              required
+            />
+          </div>
+          <label id="emailTemplateLabel" for="emailTemplate"></label>
+          <div class="input-group mb-3">
+            <textarea
+              class="w-100"
+              id="emailTemplate"
+              readonly
+            ></textarea>
+          </div>
+          <hr>
+          <label id="sendingEmailLabel" for="sendingEmail"></label>
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="sendingEmail"
+              aria-describedby="basic-addon2"
+            />
+          </div>
+          <label id="emailsmtpLabel" for="emailsmtp"></label>
+          <div class="input-group mb-3">
+            <input
+              id="emailsmtp"
+              class="form-control"
+              type="text"
+              aria-describedby="basic-addon2"
+            />
+          </div>
+          <label id="emailPasswordLabel" for="emailPassword"></label>
+          <div class="input-group mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="emailPassword"
+              aria-describedby="basic-addon2"
+              
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                id="showPassword"
+                type="button"
+              >
+                <em id="eye" class="fa fa-eye-slash"></em>
+              </button>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <button class="btn btn-primary" id="google-sign-in"></button>
+          </div>
+        </div>
+        <div id="servicesTabItem" class="tabcontent">
+          <div class="d-flex space-between">
+            <h6 id="serviceLabel" class="w-50 ml-2 text-left"></h6>
+            <h6 id="priceLabel" class="w-50 text-left"></h6>
+          </div>
+          <div id="listServicesPerso" class="mb-3"></div>
+          <button class="btn btn-primary mb-3 " id="addService">
+            <em class="fa fa-plus"></em>
+          </button>
+        </div>
+        <div id="taxesTabItem" class="tabcontent">
+          <h3 id="taxesTabCurrencyCategory"></h3>
+          <div>
+            <div class="d-flex space-between">
+              <label id="currencyMainName" class="w-50 ml-2 text-left"></label>
+              <label id="currencySubName" class="w-50 ml-2 text-left"></label>
+              <label id="currencyCode" class="w-50 ml-2 text-left"></label>
+            </div>
+            <div class="input-group mb-3 mt-1">
+              <input id="currencyMainValue" 
+                  class="form-control"
+                  type="text"
+                  aria-describedby="basic-addon2"
+                  required>
+              <input id="currencySubValue"
+                  class="form-control"
+                  type="text"
+                  aria-describedby="basic-addon2"
+                  required>
+              <input id="currencyCodeValue"
+                  class="form-control"
+                  type="text"
+                  aria-describedby="basic-addon2"
+                  required>
+             </div>
+             <div class="d-flex space-between">
+              <label id="currencySign" class="w-50 ml-2 text-left"></label>
+              <label id="signPlacement" class="w-50 ml-2 text-left"></label>
+            </div>
+            <div class="input-group mb-3">
+              <input id="currencySignValue"
+                  class="form-control"
+                  type="text"
+                  aria-describedby="basic-addon2"
+                  required>
+              <div class="d-flex col w-50">
+                  <div class="pr-2">
+                    <label id="currencyBefore" for="currencySignBeforeAfter"></label>
+                  </div>
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="currencySignBeforeAfter">
+                    <label class="custom-control-label" id="currencyAfter" for="currencySignBeforeAfter"></label>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <hr/>
+          <h3 id="taxesTabTaxesCategory"></h3>
+          <div class="d-flex space-between">
+              <h6 id="taxLabel" class="w-50 ml-2 text-left"></h6>
+              <h6 id="percentageLabel" class="w-50 ml-1 text-left"></h6>
+              <h6 id="taxIdLabel" class="w-50 ml-5 text-left"></h6>
+            </div>
+          <div id="listTaxesPerso" class="mb-3"></div>
+          <button class="btn btn-primary mb-3" id="addTax">
+            <em class="fa fa-plus"></em>
+          </button>
+         </div>
+         <div id="settingsTabItem" class="tabcontent">
+          <label id="themeLabel"></label>
+          <div class="row ml-2">
+            <div class="pr-2">
+              <em class="fa fa-sun-o"></em>
+            </div>
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="dark-theme">
+              <label class="custom-control-label" for="dark-theme"><em class="fa fa-moon-o"></em></label>
+            </div>
+          </div>
+          <div>
+            <label id="languageLabel" class="pt-2"></label>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              <div id="languageDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div>
+            <label id="importExportLabel" class="pt-2"></label>
+            <div>
+              <button class="btn btn-primary mb-2" type="button" id="exportButton" aria-expanded="false"></button>
+            </div>
+            <div>
+              <button class="btn btn-primary" type="button" id="importButton" aria-expanded="false"></button>
+            </div>
+            <hr class="mb-4 mt-4">
+            <div>
+              <button class="btn btn-primary mb-2" type="button" id="createBackup" aria-expanded="false"></button>
+            </div>
+            <div>
+              <button class="btn btn-primary mb-1 mr-2" type="button" id="restoreButton" aria-expanded="false"></button>
+              <span id="lastBakupText"></span><span id="lastBackupDate"></span>
+            </div>
+            <hr class="mb-4 mt-4">
+            <div> 
+              <button class="btn btn-primary mb-2" type="button" id="openCurrentConfigFile" aria-expanded="false"></button>
+            </div>
+            <div>
+              <button class="btn btn-primary" type="button" id="openBackupConfigFile" aria-expanded="false"></button>
+            </div>
+          </div>
+         </div>
+      </div>
+    </div>
+  </body>
+  <script src="./settingsRenderer.js"></script>
+</html>

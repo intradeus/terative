@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="./pace.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src https://cdnjs.cloudflare.com"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';img-src cdnjs.cloudflare.com"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/font-awesome/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Terative</title>
+    <script>
+      Pace.on("done", function(){
+         $(".cover").fadeOut(300);
+     });
+    </script>
+  </head>
+  <body>
+      <div class="cover"></div>
+      <div class="pr-5 pl-5 pt-3 pb-3 h-100 w-100">
+        <div class="d-flex justify-content-between">
+            <div class="col">
+                <h3><a class="btn btn-outline-secondary" href="./index.html" target="_self"><em class="ml-2 mr-2 fa fa-angle-left"></em></a></h3> 
+              </div>
+          <div class="col w-30 text-center">
+            <h2 id="clientsTitle" class="font-weight-bold text-center"></h2>
+          </div>
+          <div class="col w-30">
+            <div class="row flex-row-reverse">
+              <button class="btn btn-primary" id="addClient">
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="message-container">
+            <div id="danger" class="alert alert-danger hidden">
+              <div class="d-flex justify-content-between">
+                <span id="dangerMessage"></span> 
+                <button class="astext" id="btnDanger"><em class="fa fa-times"></em></button>
+              </div>
+            </div>
+            <div id="success" class="alert alert-success hidden">
+              <div class="d-flex justify-content-between">
+                <span id="successMessage"></span>
+                <button class="astext" id="btnSuccess"><em class="fa fa-times"></em></button>
+              </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input
+                class="form-control"
+                id="searchClient"
+                type="text"
+                placeholder="Recherche ..."
+            />
+            <div class="input-group-append">
+                <button
+                class="btn btn-outline-secondary"
+                id="clientCount"
+                type="button"
+                disabled
+              >
+              </button>
+            </div>
+        </div>
+        <div id="cachedClientsList"></div>
+      </div>
+  </body>
+  <script src="./clientsRenderer.js"></script>
+</html>
