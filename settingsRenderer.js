@@ -80,8 +80,9 @@ function setInitialValues(){
 
     //set Last Backup Date
     var stats = fsystem.statSync(store.path.replace(".json","_backup.json"));
-    document.querySelector("#lastBackupDate").innerHTML = stats.mtime.toLocaleString()
-
+    if(stats != null)
+        document.querySelector("#lastBackupDate").innerHTML = stats.mtime.toLocaleString();
+        
     assignListenerToEverything();
 }
 

@@ -11,7 +11,7 @@
     "package-win32": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/logo.ico --prune=true --out=release-builds/win32",
     "package-win64": "electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets/logo.ico --prune=true --out=release-builds/win64",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/logo.icns --prune=true --out=release-builds/darwin",
-    "installer-mac": "electron-installer-dmg --overwrite ./release-builds/darwin/Générateur\\ de\\ reçus-darwin-x64/Générateur\\ de\\ reçus.app ./dist/installers/Terative",
+    "installer-mac": "electron-installer-dmg --overwrite ./release-builds/darwin/Terative-darwin-x64/Terative.app ./dist/installers/Terative",
     "installer-win32": "electron-installer-windows --overwrite --src release-builds/win32/'Terative-win32-x64'/ --config installer-config.json",
     "installer-win64": "electron-installer-windows --overwrite --src release-builds/win64/'Terative-win32-x64'/ --config installer-config.json"
   },
