@@ -5,18 +5,11 @@ const keytar = require('keytar');
 $ = require('jquery');
 const { dialog } = require('electron').remote;
 const { remote, shell } = require('electron');
-const ElectronGoogleOAuth2 = require('@getstation/electron-google-oauth2').default;
 const localization = require('./js/localization.js');
 const general = require("./js/general-functions.js");
 const update = require("./js/updates.js");
 require('bootstrap');
 var fsystem = require('fs');
-
-const myApiOauth = new ElectronGoogleOAuth2(
-    process.env.OAUTH2CLIENTID,
-    process.env.OAUTHCLIENTSECRET,
-    ['https://mail.google.com/']
-);
 
 var LANG = store.get("lang");
 
@@ -471,13 +464,6 @@ function assignFunctionToButtons(){
 
     document.querySelector('#returnButton').addEventListener('click', () => {
         returnToMainPage();
-    });
-
-    document.querySelector('#google-sign-in').addEventListener('click', () => {
-        myApiOauth.openAuthWindowAndGetTokens()
-        .then(token => {
-            console.log(token);
-        });
     });
 
     document.querySelector("#dark-theme").addEventListener('change', () => {
