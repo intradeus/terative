@@ -232,7 +232,8 @@ function createPDF(){
             totalNumberDecimals= "00";
         }
         var totalLetter = writtenNumber(parseInt(totalNumberInt)) + " " + store.get("currencyMainValue") + 
-            localization.getLocaleText("and",localization.appErrors) + writtenNumber(parseInt(totalNumberDecimals)) + " cent(s)";
+            localization.getLocaleText("and",localization.appErrors) + writtenNumber(parseInt(totalNumberDecimals)) +
+             " " + store.get("currencySubValue");
 
         let myInvoice = new Invoice({
             config: {
