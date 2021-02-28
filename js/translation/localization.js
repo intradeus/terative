@@ -134,7 +134,10 @@ var appText = [
     ["lastBakupText","Dernière sauvegarde : ","Last backup : "],
     ["openCurrentConfigFile","Ouvrir le fichier actuel", "Open current file"],
     ["openBackupConfigFile","Ouvrir le fichier de sauvegarde","Open backup fule"],
-    ["createBackup","Créer une sauvegarde","Create a backup"]
+    ["createBackup","Créer une sauvegarde","Create a backup"],
+    ["description","Description", "Description"],
+    ["total","Total :","Total :"],
+    ["recipient","Bénéficiair : ","Recipient : "],
 ];
 
 var appErrors = [

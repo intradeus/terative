@@ -1,6 +1,5 @@
 //IMPORTS
 const Store = require('electron-store');
-const Invoice = require("nodeice");
 const nodemailer = require('nodemailer');
 const {shell} = require('electron');
 const store = new Store();
@@ -10,10 +9,11 @@ window.$ = window.jQuery = require('jquery');
 const { dialog } = require('electron').remote;
 var writtenNumber = require('written-number');
 const datepicker = require('js-datepicker')
-const localization = require('./js/localization.js');
+const localization = require('./js/translation/localization.js');
 const general = require("./js/general-functions.js");
 const update = require("./js/updates.js");
 const { degrees, PDFDocument, rgb, StandardFonts } = require('pdf-lib');
+var pdfRenderer = require('dynamic-html-pdf');
 
 //VARIABLES
 var CACHE_CLIENT = store.get("cachedClients");
@@ -138,7 +138,7 @@ function checkTaxesbool(bool) {
     }
 }
 
-function createPDF(){
+function launchPdfCreation(){
         document.querySelector("#create").disabled = true;
         toggleLoading();
         general.hideElement("success");
@@ -178,10 +178,6 @@ function createPDF(){
         if(store.get("")){
 
         }
-
-        var pathTemplate = (process.platform == 'darwin') ? "/template/template1.html" : "\\template\\template1.html";
-        var pathRow = (process.platform == 'darwin') ? "/template/row.html" : "\\template\\row.html";
-        var pathRowTaxes = (process.platform == 'darwin') ? "/template/taxRowTemplate.html" : "\\template\\taxRowTemplate.html";
 
         var taxesIds = "";
 
@@ -235,21 +231,19 @@ function createPDF(){
             localization.getLocaleText("and",localization.appErrors) + writtenNumber(parseInt(totalNumberDecimals)) +
              " " + store.get("currencySubValue");
 
-        let myInvoice = new Invoice({
-            config: {
-                template: __dirname + pathTemplate,
-                tableRowBlock: __dirname + pathRow,
-                tableTaxes : __dirname + pathRowTaxes
+        var totalWithSign = (store.get("currencySignBeforeAfter")) ? totalNumberInt + "." + totalNumberDecimals + " " + store.get("currencySignValue"):
+            store.get("currencySignValue") + " " + totalNumberInt + "." + totalNumberDecimals ;
 
-            },
-            data: {
-                invoice: {
-                    currency: {
-                        main: store.get("currencyCodeValue")
-                    }
+        var data = {
+            invoice: {
+                currency: {
+                    main: localization.getLocaleText("price",localization.appText) + " " + store.get("currencyCodeValue")
                 },
-                tasks: totalTasks
+                information: localization.getLocaleText("info",localization.appText),
+                description: localization.getLocaleText("description",localization.appText),
+                total: localization.getLocaleText("total",localization.appText)
             },
+            tasks: totalTasks,
             seller: {  
                 name: store.get('sellerName'),
                 title: store.get('sellerTitle'),
@@ -257,19 +251,19 @@ function createPDF(){
                 address: store.get('sellerAddress'),
                 phone: store.get('sellerPhone'),
                 email: store.get('sellerEmail'),
-                date: document.querySelector('#date').value,
-                receiptNumber: store.get('receiptNumber'),
+                date: localization.getLocaleText("date",localization.appText) + ": " + document.querySelector('#date').value,
+                receiptNumber: localization.getLocaleText("receiptNumberTitle",localization.appText) + store.get('receiptNumber'),
                 signature: store.get('signature'),
                 taxesIds : taxesIds,
             },
             buyer: {
-                name: document.querySelector('#clientName').value,
+                name: localization.getLocaleText("recipient",localization.appText) + document.querySelector('#clientName').value,
                 unitPriceLetter : (totalLetter.toString().substring(0, 1).toUpperCase() + totalLetter.toString().substring(1)),
-                total : totalNumberInt + "." + totalNumberDecimals
+                total : totalWithSign
             }
-        });
+        }
 
-        
+        // Check if filepath exists and is able to save a pdf
         fsystem.access(store.get('filepath') , function(err) {
             if (err && err.code === 'ENOENT') {
                 toggleLoading();
@@ -278,27 +272,46 @@ function createPDF(){
                 return;
             }
         });
+
         // Render invoice as HTML and PDF
         receiptPath = store.get('filepath') + "/" + document.querySelector('#clientName').value + "_reçu#"+ store.get('receiptNumber') + ".pdf";
-        myInvoice.toHtml(null, (err, data) => {
-        }).toPdf(receiptPath, (err, data) => {
-            if(err){
-                toggleLoading();
-                general.showMessage(false, err);
-                document.querySelector("#create").disabled = false;
-                return;
-            }else {
+        
+        
+        var html = fsystem.readFileSync('./js/pdf-render/template1.html', 'utf8');
+        var options = {
+            height: "18in",
+            width: "13in", 
+            border: "15mm"
+        };
+        var pdfdocument = {
+            type: 'file',
+            template: html,
+            context: {
+                data: data
+            },
+            path: receiptPath
+        };
+
+        // CREATE THE PDF
+        pdfRenderer.create(pdfdocument, options)
+            .then(res => {
+                console.log(res);
+                //POST CREATION ACTIONS
+                //toggle loading and success message
                 toggleLoading();
                 general.showMessage(true, localization.getLocaleText("successPdfCreation",localization.appErrors));
 
+                // show the 'show pdf ' button
                 document.getElementById("showPDF").classList.remove("hidden");
                 document.getElementById("showPDF").innerHTML = localization.getLocaleText("showPdf",localization.appText) + "#" + store.get('receiptNumber') +
-                 localization.getLocaleText("of",localization.appText) + document.querySelector('#clientName').value;
+                    localization.getLocaleText("of",localization.appText) + document.querySelector('#clientName').value;
 
+                // update the attachment on the mailing part
                 document.getElementById("attachmentName").innerHTML = localization.getLocaleText("attachment",localization.appText) + 
-                 localization.getLocaleText("receipt",localization.appText) + "#" + store.get('receiptNumber') + localization.getLocaleText("of",localization.appText) +
-                 document.querySelector('#clientName').value;
-
+                    localization.getLocaleText("receipt",localization.appText) + "#" + store.get('receiptNumber') + localization.getLocaleText("of",localization.appText) +
+                    document.querySelector('#clientName').value;
+                
+                // Add client to list if he didn't already exist
                 if(CACHE_CLIENT.length == 0){
                     CACHE_CLIENT.push({
                         name : document.querySelector('#clientName').value,
@@ -323,21 +336,31 @@ function createPDF(){
                     }
                 }
 
+                //update the list of client names
                 updateNamesOptions();
                 store.set('cachedClients', CACHE_CLIENT);
                 store.set('tempclientName', document.querySelector('#clientName').value);
                 store.set('tempdate', document.querySelector('#date').value);
             
+                //update the receipt number
                 var newReceiptNumber = parseInt(store.get('receiptNumber')) + 1;
                 store.set('receiptNumber', newReceiptNumber.toString());
                 document.querySelector('#receiptNumber').value = newReceiptNumber;
                 document.getElementById("sendEmail").disabled = false;
                 
+                //clear the inputs
                 clearInputs();
 
-                document.querySelector("#create").disabled = false;
-            }
-        });         
+                //enable the create button
+                document.querySelector("#create").disabled = false; 
+            })
+            .catch(error => {
+                toggleLoading();
+                general.showMessage(false, error);
+                console.log(error);
+            });
+
+        
 }
 
 function choosePdf(){
@@ -707,7 +730,7 @@ function assignFunctionToButtons(){
     });
 
     document.querySelector('#create').addEventListener('click', () => {
-        createPDF();
+        launchPdfCreation();
     });
 
     document.querySelector('#sendEmail').addEventListener('click', () => {

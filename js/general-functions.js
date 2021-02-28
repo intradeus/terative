@@ -1,4 +1,4 @@
-const localization = require('./localization.js');
+const localization = require('./translation/localization.js');
 
 //General functions accross the pages
 function setEditor(){
@@ -13,7 +13,7 @@ function setEditor(){
         branding: false,
         elementpath: false,
         language: (LANG != "en_US") ? LANG:null,
-        language_url: (LANG != "en_US") ? './js/tinymce-lang/'+ LANG +'.js' : null,
+        language_url: (LANG != "en_US") ? './js/translation/'+ LANG +'.js' : null,
         content_style: (store.get("dark-theme")) ? 'body { background-color:#303030; color : white;}':"",
         toolbar: ' bold italic underline fontsizeselect | link | alignleft aligncenter alignright alignjustify | outdent indent | undo redo refresh',
         setup: function (editor) {

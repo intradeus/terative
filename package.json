@@ -27,17 +27,17 @@
   "dependencies": {
     "bootstrap": "^4.5.3",
     "dotenv": "^8.2.0",
+    "dynamic-html-pdf": "^1.0.2",
     "electron-prompt": "^1.6.0",
     "electron-store": "^5.2.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "js-datepicker": "^5.16.0",
     "keytar": "^4.13.0",
-    "nodeice": "^3.0.9",
     "nodemailer": "^6.4.6",
     "pdf-lib": "^1.12.0",
     "popper.js": "^1.16.1",
-    "tinymce": "^5.5.1",
+    "tinymce": "^5.7.0",
     "written-number": "^0.9.1"
   }
 }

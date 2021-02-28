@@ -69,51 +69,57 @@
             <!-- Seller Fields -->
             <div style="width:100%; display: -webkit-flex; display: flex;">
                 <div style="width: 70%; -webkit-flex: 1; flex: 2; justify-content: space-between;">
-                    <h2>{{seller.name}}</h2>
-                    <p>{{seller.title}}</p>
-                    <p>{{seller.registrationID}}</p>
-                    <p>{{seller.address}}</p>
-                    <p> {{seller.phone}}</p>
-                    <p>{{seller.email}}</p>
+                    <h2>{{data.seller.name}}</h2>
+                    <p>{{data.seller.title}}</p>
+                    <p>{{data.seller.registrationID}}</p>
+                    <p>{{data.seller.address}}</p>
+                    <p>{{data.seller.phone}}</p>
+                    <p>{{data.seller.email}}</p>
                 </div>
                 <div style="width: 30%; -webkit-flex: 1; flex: 1; align-items:flex-end; ">
-                    <h2 style="text-align: right;">Reçu #{{seller.receiptNumber}}</h2>
-                    <h2 style="text-align: right;">Date : {{seller.date}}</h2>
+                    <h2 style="text-align: right;">{{data.seller.receiptNumber}}</h2>
+                    <h2 style="text-align: right;">{{data.seller.date}}</h2>
                 </div>
             </div>
             <hr>
 
             <!-- Seller Fields -->
-            <h2 style="font-size: 24px;"><strong>Informations</strong></h2>
+            <h2 style="font-size: 24px;"><strong>{{data.invoice.information}}</strong></h2>
             <br>
-            <h3>Bénéficiaire : {{buyer.name}}</h3>
+            <h3>{{data.buyer.name}}</h3>
             <table class="bordered full-width padded mt-s mb-s">
                 <thead>
                     <tr>
                         <th>
-                            <strong>Description</strong>
+                            <strong>{{data.invoice.description}}</strong>
                         </th>
                         <th>    
-                            <strong>Prix (CAD)</strong>
+                            <strong>{{data.invoice.currency.main}}</strong>
                         </th>
                     </tr>
                 </thead>
                 <tbody class="text-top">
-                    {{{description_rows}}}
+                    <ul>
+                    {{#each data.tasks}}
+                    <tr>
+                        <td>{{this.description}}</td>
+                        <td class="text-right">{{this.unitPrice}} </td>
+                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
             <div>
-                <p style="font-size: 12px;">{{seller.taxesIds}}</p>
+                <p style="font-size: 12px;">{{data.seller.taxesIds}}</p>
             </div>
             <div style="float: right; border-bottom: 2px solid black; margin-bottom: 40px">
-                <h3><b>Total :</b></h3> 
-                <p style="float: right; font-size: 20px; padding: 2px 4px 4px 4px ;">{{buyer.unitPriceLetter}}</p>
+                <h3><b>{{data.invoice.total}}</b></h3> 
+                <p style="float: right; font-size: 20px; padding: 2px 4px 4px 4px ;">{{data.buyer.unitPriceLetter}}</p>
                 <br>
-                <p style="float: right; font-size: 20px; padding: 4px;">{{buyer.total}} $</p>
+                <p style="float: right; font-size: 20px; padding: 4px;">{{data.buyer.total}}</p>
             </div>            
             <br>
-            <img style="padding-bottom: 3px; border-bottom: 2px solid black;margin-top: 100px;" width="210px" src="{{seller.signature}}">
-            <h3>{{seller.name}}</h3>
+            <img style="padding-bottom: 3px; border-bottom: 2px solid black;margin-top: 100px;" width="210px" src="{{data.seller.signature}}">
+            <h3>{{data.seller.name}}</h3>
         </div>
     </body>
 </html>
