@@ -549,6 +549,7 @@ function assignFunctionToButtons(){
 
     document.querySelector("#saveSettingsButton").addEventListener('click',() => {
         savePersonnalInfo();
+        general.showMessage(true, localization.getLocaleText("successfulSave", localization.appErrors));
         showExitSaveMessage = false; 
     })
 }

@@ -30,11 +30,11 @@ function setEditor(){
 }
 
 function assignDarkTheme(){
-    if(store.get("dark-theme") == true){
-        document.getElementsByTagName("body")[0].className += " dark-theme";
+    if(store.get("dark-theme") == false){
+        document.getElementsByTagName("body")[0].className += " light-theme";
     }
     else {
-        document.getElementsByTagName("body")[0].className += " light-theme";
+        document.getElementsByTagName("body")[0].className += " dark-theme";
     }
 }
 

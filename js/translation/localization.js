@@ -186,7 +186,8 @@ var appErrors = [
     ["clientAddedSuccess","Client ajouté avec succès","Client successfully added"],
     ["restoreTemplate","Restorer le modèle","Restore template"],
     ["successfulImport","Fichier de configuration importé avec succès", "Config file successfully imported"],
-    ["successfulExport","Fichier de configuration exporté avec succès", "Config file successfully exported"]
+    ["successfulExport","Fichier de configuration exporté avec succès", "Config file successfully exported"],
+    ["successfulSave","Sauvegardé avec succès","Successfully saved"]
 ];
 
 var appLanguages = [
