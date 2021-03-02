@@ -5,7 +5,7 @@ const keytar = require('keytar');
 $ = require('jquery');
 const { dialog } = require('electron').remote;
 const { remote, shell } = require('electron');
-const localization = require('./js/localization.js');
+const localization = require('./js/translation/localization.js');
 const general = require("./js/general-functions.js");
 const update = require("./js/updates.js");
 require('bootstrap');
@@ -17,7 +17,6 @@ var LANG = store.get("lang");
 var showExitSaveMessage = false;    
 
 //INITIAL FUNCTIONS
-
 localization.setLocaleText("settings", LANG);
 assignFunctionToButtons();
 setInitialValues();
@@ -564,7 +563,7 @@ function assignListenerToEverything(){
         showExitSaveMessage = true;
     });
 
-    //remove listener from save button, export file, open files, create backup
+    // Remove listener from save button, export file, open files, create backup
     $( "#saveSettingsButton").off();
     $( "#exportButton").off();
     $( "#openCurrentConfigFile").off();

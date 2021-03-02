@@ -4,7 +4,7 @@ const store = new Store();
 window.$ = window.jQuery = require('jquery');
 const { remote } = require('electron')
 const prompt = require('electron-prompt');
-const localization = require('./js/localization.js');
+const localization = require('./js/translation/localization.js');
 const general = require("./js/general-functions.js");
 
 //VARIABLES
