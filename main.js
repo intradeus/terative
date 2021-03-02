@@ -8,9 +8,9 @@ const store = new Store();
 function createWindow () {
   //Menu.setApplicationMenu(false);
   const mainWindow = new BrowserWindow({
-    width: 830,
+    width: 930,
     height: 850,
-    minWidth: 800,
+    minWidth: 930,
     minHeight: 390,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
