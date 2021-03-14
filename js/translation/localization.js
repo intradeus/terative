@@ -133,11 +133,12 @@ var appText = [
     ["restoreButton","Restaurer la dernière sauvegarde","Restore last backup"],
     ["lastBakupText","Dernière sauvegarde : ","Last backup : "],
     ["openCurrentConfigFile","Ouvrir le fichier actuel", "Open current file"],
-    ["openBackupConfigFile","Ouvrir le fichier de sauvegarde","Open backup fule"],
+    ["openBackupConfigFile","Ouvrir le fichier de sauvegarde","Open backup file"],
     ["createBackup","Créer une sauvegarde","Create a backup"],
     ["description","Description", "Description"],
     ["total","Total :","Total :"],
     ["recipient","Bénéficiair : ","Recipient : "],
+    ["version","Version: ","Version: "]
 ];
 
 var appErrors = [
