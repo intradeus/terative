@@ -74,7 +74,11 @@ function setInitialValues(){
     var stats = fsystem.statSync(store.path.replace(".json","_backup.json"));
     if(stats != null)
         document.querySelector("#lastBackupDate").innerHTML = stats.mtime.toLocaleString();
-        
+
+    // set version text
+    document.querySelector("#versionState").innerHTML = localization.getLocaleText("version",localization.appText) + store.get("version")
+    
+    //assign listeners to all buttons
     assignListenerToEverything();
 }
 

@@ -57,6 +57,7 @@ function getDatepickerOptions(){
     return datepickerOptions;
 }
 
+
 function updateNamesOptions(){
     if(CACHE_CLIENT){
         document.getElementById("cacheNames").innerHTML = '';
@@ -95,7 +96,6 @@ function setEmail(clientName){
             }
         }
     });
-    
 }
 
 
@@ -113,6 +113,8 @@ function setInitialValues(){
     storedServices.forEach(s => {
         addOptionsDataList("services", s.name);
     });
+
+    document.querySelector("#currencySignMainPage").innerHTML = store.get("currencySignValue");
 }
 
 
@@ -708,7 +710,7 @@ function assignFunctionToButtons(){
     document.querySelector('#service').addEventListener('change', () => {
         setPrice();
     });
-    
+
     document.querySelector('#clientName').addEventListener('blur', () => {
         setEmail(document.querySelector('#clientName').value);
     });
