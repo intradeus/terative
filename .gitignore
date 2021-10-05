@@ -1,6 +1,5 @@
 node_modules
 release-builds/
 *.dmg
-dist/
 .env
 .DS_Store

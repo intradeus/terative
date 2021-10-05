@@ -8,6 +8,7 @@ const store = new Store();
 function createWindow () {
   //Menu.setApplicationMenu(false);
   const mainWindow = new BrowserWindow({
+    autoHideMenuBar: true,
     width: 930,
     height: 850,
     minWidth: 930,

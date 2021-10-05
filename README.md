@@ -1,15 +1,33 @@
-Electron application to generate PDF receipts and directly send them to your clients via email
--- with a client management system
--- settings to modify the personnal informations written on the receipt itself
--- service management system, to easily add a service and it's related price
--- Email templates, to send a customized email to each of your clients
+# Terative ![Logo|50x50](https://github.com/intradeus/terative/blob/master/assets/logo.png?raw=true)
+#Windows #MacOS
+
+A pretty cool Electron(8.5.2) application to generate PDF receipts and directly send them to your clients via email
+- Contains a client management system
+- Settings to modify the personnal informations written on the receipt itself
+- Service management system, to easily add a service and it's related price
+- Email template, to send a customized email to your clients
+- D A R K    M O D E !!
+
+Une Application Electron(8.5.2) quand même cool pour générer un reçu en PDF et directement l'envoyer à vos clients par email
+- Inclus un gestionnaire de clients
+- Des réglages pour modifier les informations personnelles rédigées sur le reçu
+- un gestionnaire de services, pour facilement rajouter un service et son prix
+- Un patron d'email, pour envoyer des emails personnalisés à vos clients
+- M O D E   S O M B R E !!!
 
 
-Application Electron pour générer un reçu en PDF et directement l'envoyer à vos clients par email
--- Inclus un gestionnaire de clients
--- Des réglages pour modifier les informations personnelles rédigées sur le reçu
--- un gestionnaire de services, pour facilement rajouter un service et son prix
--- Des patrons d'email, pour envoyer des emails personnalisés à vos clients
+# Screenshots :
+### Main page : 
+![Main page](https://github.com/intradeus/terative/blob/master/assets/sc1.png?raw=true)
+
+### Settings :
+![Settings example](https://github.com/intradeus/terative/blob/master/assets/sc2.png?raw=true)
+
+### Clients management : 
+![Clients management ](https://github.com/intradeus/terative/blob/master/assets/sc3.png?raw=true)
+
+### Receipt created
+![Receipt example](https://github.com/intradeus/terative/blob/master/assets/sc4.png?raw=true)
 
 # MACOS 
         1) REBUILD PACKAGES :
