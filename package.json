@@ -8,36 +8,39 @@
     "start": "electron .",
     "rebuild-packages-mac": "$(npm bin)/electron-rebuild",
     "rebuild-packages-win": ".\\node_modules\\.bin\\electron-rebuild.cmd",
-    "package-win32": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/logo.ico --prune=true --out=release-builds/win32",
-    "package-win64": "electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets/logo.ico --prune=true --out=release-builds/win64",
+    "package-win32": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets\\logo.ico --prune=true --out=release-builds\\win32",
+    "package-win64": "electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets\\logo.ico --prune=true --out=release-builds\\win64",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/logo.icns --prune=true --out=release-builds/darwin",
     "installer-mac": "electron-installer-dmg --overwrite ./release-builds/darwin/Terative-darwin-x64/Terative.app ./dist/installers/Terative",
     "installer-win32": "electron-installer-windows --overwrite --src release-builds\\win32\\Terative-win32-x64\\ --config installer-config.json",
-    "installer-win64": "electron-installer-windows --overwrite --src release-builds\\win64\\Terative-win32-x64\\ --config installer-config.json"
+    "installer-win64": "electron-installer-windows --overwrite --src release-builds\\win64\\Terative-win32-x64\\ --config installer-config.json",
+    "build-mac":"npm run rebuild-packages-mac && npm run package-mac && npm run installer-mac",
+    "build-win64":"npm run rebuild-packages-win && npm run package-win64 && npm run installer-win64",
+    "build-win32":"npm run rebuild-packages-win && npm run package-win32 && npm run installer-win32"
   },
   "author": "Intradeus",
-  "license": "CC0-1.0",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^8.2.0",
     "electron-installer-dmg": "^3.0.0",
     "electron-installer-windows": "^3.0.0",
-    "electron-packager": "^14.2.1",
+    "electron-packager": "^15.4.0",
     "electron-rebuild": "^1.11.0"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
     "dotenv": "^8.2.0",
-    "dynamic-html-pdf": "^1.0.2",
+    "dynamic-html-pdf": "^1.0.4",
     "electron-prompt": "^1.6.0",
     "electron-store": "^5.2.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "js-datepicker": "^5.16.0",
     "keytar": "^4.13.0",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.6.5",
     "pdf-lib": "^1.12.0",
     "popper.js": "^1.16.1",
-    "tinymce": "^5.7.0",
+    "tinymce": "^5.9.2",
     "written-number": "^0.9.1"
   }
 }

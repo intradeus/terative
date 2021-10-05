@@ -165,7 +165,7 @@ var appErrors = [
     ["invalidChoice","Choix invalide","Invalid choice"],
     ["yes","Oui","Yes"],
     ["no","Non","No"],
-    ["confirmCancellationText1","Êtes-vous sûr de vouloir annuler le reçu : ","Are youu sure to delete the receipt : "],
+    ["confirmCancellationText1","Êtes-vous sûr de vouloir annuler le reçu : ","Are you sure to delete the receipt : "],
     ["confirmCancellationText2","? Cette action est irréversible", "? This action is irreversible"],
     ["successCancellation","Reçu annulé avec succès","Receipt successfully cancelled"],
     ["emailPasswordMissing","Mot de passe email manquant ou inaccessible","Email password missing or inaccessible"],
