@@ -361,8 +361,6 @@ function launchPdfCreation(){
                 general.showMessage(false, error);
                 console.log(error);
             });
-
-        
 }
 
 function choosePdf(){
@@ -428,10 +426,17 @@ async function cancelPDF(){
             return;
         } 
         else if(files.length > 0){
-            cancelledPdfPath = files[0];
+            if(files[0].includes(localization.getLocaleText("cancelled",localization.appText))){
+                toggleLoading();
+                general.showMessage(false, localization.getLocaleText("alreadyCancelledFile",localization.appErrors));
+                return;
+            }else {
+                cancelledPdfPath = files[0];
+            }
         }
         else {
             general.showMessage(false, localization.getLocaleText("invalidFile",localization.appErrors));
+            return;
         }
     }
     else if(res.response == 1){
@@ -442,7 +447,9 @@ async function cancelPDF(){
         return;
     }
     else {
+        toggleLoading();
         general.showMessage(false, localization.getLocaleText("invalidChoice",localization.appErrors));
+        return;
     }
 
     // Show confirmation message for cancellation
