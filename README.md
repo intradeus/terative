@@ -1,19 +1,16 @@
-# Terative ![Logo|50x50](https://github.com/intradeus/terative/blob/master/assets/logo.png?raw=true)
-#Windows #MacOS
+<p align="center"><img src="https://github.com/intradeus/terative/blob/master/assets/logo.png?raw=true" width="120" height="120">
 
-A pretty cool Electron(8.5.2) application to generate PDF receipts and directly send them to your clients via email
+# **Terative**
+
+
+``#Windows`` ``#MacOS`` ``#Français`` ``#English``
+
+A pretty cool Electron(8.5.2) application to generate PDF receipts and **directly send them to your clients** via email with exactly **8 clics**.
 - Contains a client management system
 - Settings to modify the personnal informations written on the receipt itself
 - Service management system, to easily add a service and it's related price
 - Email template, to send a customized email to your clients
-- D A R K    M O D E !!
-
-Une Application Electron(8.5.2) quand même cool pour générer un reçu en PDF et directement l'envoyer à vos clients par email
-- Inclus un gestionnaire de clients
-- Des réglages pour modifier les informations personnelles rédigées sur le reçu
-- un gestionnaire de services, pour facilement rajouter un service et son prix
-- Un patron d'email, pour envoyer des emails personnalisés à vos clients
-- M O D E   S O M B R E !!!
+- D A R K  &nbsp;&nbsp;  M O D E !!
 
 
 # Screenshots :
