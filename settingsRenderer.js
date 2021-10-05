@@ -455,6 +455,14 @@ function assignFunctionToButtons(){
     document.querySelector("#chooseSignature").addEventListener('click',() =>{
         chooseImageAndTransfertToB64();
     });
+    
+    document.querySelector('#btnSuccess').addEventListener('click', () => {
+        general.hideElement("success");
+    });
+
+    document.querySelector('#btnDanger').addEventListener('click', () => {
+        general.hideElement("danger");
+    });
 
     document.querySelector("#chooseDirectory").addEventListener('click',() =>{
         var directory = chooseDirectoryPath();

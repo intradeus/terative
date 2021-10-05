@@ -188,7 +188,8 @@ var appErrors = [
     ["restoreTemplate","Restorer le modèle","Restore template"],
     ["successfulImport","Fichier de configuration importé avec succès", "Config file successfully imported"],
     ["successfulExport","Fichier de configuration exporté avec succès", "Config file successfully exported"],
-    ["successfulSave","Sauvegardé avec succès","Successfully saved"]
+    ["successfulSave","Sauvegardé avec succès","Successfully saved"],
+    ["alreadyCancelledFile","Ce fichier a déjà été annulé","This file is already cancelled"]
 ];
 
 var appLanguages = [
