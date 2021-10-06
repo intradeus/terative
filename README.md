@@ -5,7 +5,7 @@
 
 ``#Windows`` ``#MacOS`` ``#Français`` ``#English``
 
-A pretty cool Electron(8.5.2) application to generate PDF receipts and **directly send them to your clients** via email with exactly **8 clics**.
+A pretty cool Electron (8.5.2) application to generate PDF receipts and send them to your clients via email **in less than 15 secondes**.
 - Contains a client management system
 - Settings to modify the personnal informations written on the receipt itself
 - Service management system, to easily add a service and it's related price
