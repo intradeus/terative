@@ -710,6 +710,9 @@ function setPrice(){
     })
 }
 
+function openSecureAppInBrowser(){
+    shell.openExternal("https://myaccount.google.com/lesssecureapps");
+}
 
 //SETTING UP FUNCTIONS TO BUTTONS
 function assignFunctionToButtons(){
