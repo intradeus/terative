@@ -30,8 +30,16 @@ A pretty cool Electron (8.5.2) application to generate PDF receipts and send the
 ### Receipt created
 ![Receipt example](https://github.com/intradeus/terative/blob/master/assets/sc4.png?raw=true)
 
-        
-        
+
+# Run it :
+
+```
+npm ci 
+
+npm run start
+```
+
+
 # Build it yourself : 
 ### MACOS (can only build on MacOS only)
 ```
