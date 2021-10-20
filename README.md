@@ -43,20 +43,20 @@ npm run start
 # Build it yourself : 
 ### MACOS (can only build on MacOS only)
 ```
-npm install
+npm ci
         
 npm run build-macos
 ```
                 
 ### WIN32 (requires windows-build-tools)
 ```
-npm install
+npm ci
         
 npm run build-win32
 ```
 ### WIN64: (requires windows-build-tools):
 ```
-npm install
+npm ci
         
 npm run build-win64
 ```
