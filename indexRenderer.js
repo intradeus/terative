@@ -710,8 +710,8 @@ function setPrice(){
     })
 }
 
-function openSecureAppInBrowser(){
-    shell.openExternal("https://myaccount.google.com/lesssecureapps");
+function openAppPasswordInBrowser(){
+    shell.openExternal("https://myaccount.google.com/apppasswords");
 }
 
 //SETTING UP FUNCTIONS TO BUTTONS
