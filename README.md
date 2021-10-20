@@ -17,6 +17,10 @@ A pretty cool Electron (8.5.2) application to generate PDF receipts and send the
 - Backups and restoration of your clients
 - Cancellation: made a mistake on your last receipt but don't want to delete it because it will look like fraud ? CANCEL IT !! It will add a "cancelled" message on your receipt and change its name.
 
+        
+# Notes
+If you use a Gmail account for the email, don't use your real password but instead create an [App Password](https://myaccount.google.com/apppasswords)
+
 # Screenshots :
 ### Main page : 
 ![Main page](https://github.com/intradeus/terative/blob/master/assets/sc1.png?raw=true)
