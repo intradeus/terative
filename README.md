@@ -1,6 +1,6 @@
 <p align="center"><img src="https://github.com/intradeus/terative/blob/master/assets/logo.png?raw=true" width="120" height="120">
 
-# **Terative**
+# **Terative - WORK IN PROGRESS, DO NOT USE YET **
 
 
 ``#Windows`` ``#MacOS`` ``#Français`` ``#English``
