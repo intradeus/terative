@@ -1,7 +1,0 @@
-{
-    "dest": "dist/installers/",
-    "icon": "assets/logo.ico",
-    "options": {
-        "exe":"Terative.exe"
-    }
-}

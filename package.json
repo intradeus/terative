@@ -1,46 +1,37 @@
 {
-  "name": "terative",
-  "version": "4.1.0",
-  "productName": "Terative",
-  "description": "A receipt generator",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "rebuild-packages-mac": "$(npm bin)/electron-rebuild",
-    "rebuild-packages-win": ".\\node_modules\\.bin\\electron-rebuild.cmd",
-    "package-win32": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets\\logo.ico --prune=true --out=release-builds\\win32",
-    "package-win64": "electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets\\logo.ico --prune=true --out=release-builds\\win64",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/logo.icns --prune=true --out=release-builds/darwin",
-    "installer-mac": "electron-installer-dmg --overwrite ./release-builds/darwin/Terative-darwin-x64/Terative.app ./dist/installers/Terative",
-    "installer-win32": "electron-installer-windows --overwrite --src release-builds\\win32\\Terative-win32-x64\\ --config installer-config.json",
-    "installer-win64": "electron-installer-windows --overwrite --src release-builds\\win64\\Terative-win32-x64\\ --config installer-config.json",
-    "build-mac": "npm run rebuild-packages-mac && npm run package-mac && npm run installer-mac",
-    "build-win64": "npm run rebuild-packages-win && npm run package-win64 && npm run installer-win64",
-    "build-win32": "npm run rebuild-packages-win && npm run package-win32 && npm run installer-win32"
-  },
-  "author": "Intradeus",
+  "name": "electron-vue-vite",
+  "version": "2.0.0",
+  "main": "dist-electron/main/index.js",
+  "description": "Really simple Electron + Vue + Vite boilerplate.",
+  "author": "草鞋没号 <308487730@qq.com>",
   "license": "MIT",
-  "devDependencies": {
-    "electron": "^8.2.0",
-    "electron-installer-dmg": "^3.0.0",
-    "electron-installer-windows": "^3.0.0",
-    "electron-packager": "^15.4.0",
-    "electron-rebuild": "^3.2.3"
+  "private": true,
+  "keywords": [
+    "electron",
+    "rollup",
+    "vite",
+    "vue3",
+    "vue"
+  ],
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
+    }
   },
-  "dependencies": {
-    "bootstrap": "^4.5.3",
-    "dotenv": "^8.2.0",
-    "dynamic-html-pdf": "^1.0.4",
-    "electron-prompt": "^1.6.0",
-    "electron-store": "^8.0.1",
-    "font-awesome": "^4.7.0",
-    "jquery": "^3.5.1",
-    "js-datepicker": "^5.16.0",
-    "keytar": "^7.7.0",
-    "nodemailer": "^6.6.5",
-    "pdf-lib": "^1.12.0",
-    "popper.js": "^1.16.1",
-    "tinymce": "^5.9.2",
-    "written-number": "^0.9.1"
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "electron": "^22.0.3",
+    "electron-builder": "^23.6.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vite-plugin-electron": "^0.11.1",
+    "vite-plugin-electron-renderer": "^0.12.1",
+    "vue": "^3.2.45",
+    "vue-tsc": "^1.0.24"
   }
 }

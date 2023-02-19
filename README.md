@@ -1,66 +1,71 @@
-<p align="center"><img src="https://github.com/intradeus/terative/blob/master/assets/logo.png?raw=true" width="120" height="120">
+# electron-vite-vue
 
-# **Terative - WORK IN PROGRESS, DO NOT USE YET**
+🥳 Really simple `Electron` + `Vue` + `Vite` boilerplate.
 
+<!-- [![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) -->
+<!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/ae3863e3-1aec-4eb1-8f9f-1890af56929d/deploy-status)](https://app.netlify.com/sites/electron-vite/deploys) -->
+<!-- [![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-vue)](https://github.com/electron-vite/electron-vite-vue/blob/main/LICENSE) -->
+<!-- [![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-vue?color=fa6470)](https://github.com/electron-vite/electron-vite-vue) -->
+<!-- [![GitHub forks](https://img.shields.io/github/forks/caoxiemeihao/electron-vite-vue)](https://github.com/electron-vite/electron-vite-vue) -->
+[![GitHub Build](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml/badge.svg)](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml)
+[![GitHub Discord](https://img.shields.io/badge/chat-discord-blue?logo=discord)](https://discord.gg/sRqjYpEAUK)
 
-``#Windows`` ``#MacOS`` ``#Français`` ``#English``
+## Features
 
-A pretty cool Electron (8.5.2) application to generate PDF receipts and send them to your clients via email **in less than 15 secondes**.
-- Contains a client management system, to add, edit or remove clients informations.
-- Settings to modify the personnal informations written on the receipt itself.
-- Service management system, to easily add a service and it's related price.
-- Taxes support, as well as all kinds of currencies.
-- Email template, to send a customized email to your clients.
-- Memory : the app grows as you add clients, automatically registering names and their linked email addresses, saves you time the more you use it.
-- D A R K  &nbsp;&nbsp;  M O D E !!
-- Everything is on your computer, nothing goes in the cloud, to keep your clients personnal informations secure.
-- Backups and restoration of your clients
-- Cancellation: made a mistake on your last receipt but don't want to delete it because it will look like fraud ? CANCEL IT !! It will add a "cancelled" message on your receipt and change its name.
+📦 Out of the box  
+🎯 Based on the official [template-vue-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts), less invasive  
+🌱 Extensible, really simple directory structure  
+💪 Support using Node.js API in Electron-Renderer  
+🔩 Support C/C++ native addons  
+🖥 It's easy to implement multiple windows  
 
-        
-# Notes
-If you use a Gmail account for the email, don't use your real password but instead create an [App Password](https://myaccount.google.com/apppasswords)
+## Quick Start
 
-# Screenshots :
-### Main page : 
-![Main page](https://github.com/intradeus/terative/blob/master/assets/sc1.png?raw=true)
-
-### Settings :
-![Settings example](https://github.com/intradeus/terative/blob/master/assets/sc2.png?raw=true)
-
-### Clients management : 
-![Clients management ](https://github.com/intradeus/terative/blob/master/assets/sc3.png?raw=true)
-
-### Receipt created
-![Receipt example](https://github.com/intradeus/terative/blob/master/assets/sc4.png?raw=true)
-
-
-# Run it :
-
-```
-npm ci 
-
-npm run start
+```sh
+npm create electron-vite
 ```
 
+<!-- [![quick-start](https://asciinema.org/a/483731.svg)](https://asciinema.org/a/483731) -->
 
-# Build it yourself : 
-### MACOS (can only build on MacOS only)
+![electron-vite-vue.gif](/public/electron-vite-vue.gif)
+
+## Debug
+
+![electron-vite-react-debug.gif](https://github.com/electron-vite/electron-vite-react/blob/main/public/electron-vite-react-debug.gif?raw=true)
+
+## Directory
+
+```diff
++ ├─┬ electron
++ │ ├─┬ main
++ │ │ └── index.ts    entry of Electron-Main
++ │ └─┬ preload
++ │   └── index.ts    entry of Preload-Scripts
+  ├─┬ src
+  │ └── main.ts       entry of Electron-Renderer
+  ├── index.html
+  ├── package.json
+  └── vite.config.ts
 ```
-npm ci
-        
-npm run build-macos
+
+## Be aware
+
+🚨 By default, this template integrates Node.js in the Renderer process. If you don't need it, you just remove the option below. [Because it will modify the default config of Vite](https://github.com/electron-vite/vite-plugin-electron-renderer#config-presets-opinionated).
+
+```diff
+# vite.config.ts
+
+export default {
+  plugins: [
+-   // Use Node.js API in the Renderer-process
+-   renderer({
+-     nodeIntegration: true,
+-   }),
+  ],
+}
 ```
-                
-### WIN32 (requires windows-build-tools)
-```
-npm ci
-        
-npm run build-win32
-```
-### WIN64: (requires windows-build-tools):
-```
-npm ci
-        
-npm run build-win64
-```
+
+## FAQ
+
+- [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron-renderer#dependencies-vs-devdependencies)
+- [C/C++ addons, Node.js modules - Pre-Bundling](https://github.com/electron-vite/vite-plugin-electron-renderer#dependency-pre-bundling)
