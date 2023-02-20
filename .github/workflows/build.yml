@@ -16,16 +16,7 @@ on:
       - "!.github/workflows/build.yml"
 
 jobs:
-  create-release:  #1) Create the release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create a Release
-        uses: ncipollo/release-action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          draft: true
-
-  build: # 2) Build the release, for each OS, and upload the executables
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -66,6 +57,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: release/${{ github.ref_name }}/terative_*
-          tag: ${{ github.ref }} # automatically converts the tag name from the ref
+          tag: ${{ steps.release_drafter.outputs.tag_name }} # automatically converts the tag name from the ref
           overwrite: true
           file_glob: true
