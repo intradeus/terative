@@ -32,11 +32,11 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            CLEANUP_CMD: "npx rimraf 'release/!(*.deb|*.AppImage)'"
+            CLEANUP_CMD: "npx rimraf 'release/${{ github.ref_name }}/!(*.deb|*.AppImage)'"
           - os: windows-latest
-            CLEANUP_CMD: "npx rimraf release\\!(*.exe)"
+            CLEANUP_CMD: "npx rimraf release\\${{ github.ref_name }}\\!(*.exe)"
           - os: macos-latest
-            CLEANUP_CMD: "npx rimraf 'release/!(*.dmg)'"
+            CLEANUP_CMD: "npx rimraf 'release/${{ github.ref_name }}/!(*.dmg)'"
 
     steps:
       - name: Checkout Code
@@ -58,17 +58,11 @@ jobs:
       - name: Cleanup release artefacts
         run: ${{ matrix.CLEANUP_CMD }}
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ matrix.os }}
-          path: release
-
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: release/terative_*
-          tag: ${{ github.ref }}
+          file: release/${{ github.ref_name }}/terative_*
+          tag: ${{ github.ref }} # automatically converts the tag name from the ref
           overwrite: true
           file_glob: true
