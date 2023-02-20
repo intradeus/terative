@@ -32,11 +32,11 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            CLEANUP_CMD: "npx rimraf release/!(*.deb|*.AppImage)"
+            CLEANUP_CMD: "npx rimraf 'release/!(*.deb|*.AppImage)'"
           - os: windows-latest
             CLEANUP_CMD: "npx rimraf release\\!(*.exe)"
           - os: macos-latest
-            CLEANUP_CMD: "npx rimraf release/!(*.dmg)"
+            CLEANUP_CMD: "npx rimraf 'release/!(*.dmg)'"
 
     steps:
       - name: Checkout Code
