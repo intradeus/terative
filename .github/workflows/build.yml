@@ -27,16 +27,9 @@ jobs:
 
   build: # 2) Build the release, for each OS, and upload the executables
     runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
-        include:
-          - os: ubuntu-latest
-            CLEANUP_CMD: "npx rimraf 'release/${{ github.ref_name }}/!(*.deb|*.AppImage)'"
-          - os: windows-latest
-            CLEANUP_CMD: "npx rimraf release\\${{ github.ref_name }}\\!(*.exe)"
-          - os: macos-latest
-            CLEANUP_CMD: "npx rimraf 'release/${{ github.ref_name }}/!(*.dmg)'"
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     steps:
       - name: Checkout Code
@@ -55,8 +48,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Cleanup release artefacts
-        run: ${{ matrix.CLEANUP_CMD }}
+      - name: Cleanup release artefacts (windows)
+        if: matrix.os == 'windows-latest'
+        shell: cmd
+        run: npx rimraf release\\${{ github.ref_name }}\\!(*.exe)
+
+      - name: Cleanup release artefacts (linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: npx rimraf 'release/${{ github.ref_name }}/!(*.deb|*.AppImage)'
+
+      - name: Cleanup release artefacts (macos)
+        if: matrix.os == 'macos-latest'
+        run: npx rimraf 'release/${{ github.ref_name }}/!(*.dmg)'
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
