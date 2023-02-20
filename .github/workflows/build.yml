@@ -2,7 +2,8 @@ name: Build
 
 on:
   push:
-    branches: [main]
+    tags:        
+      - 'v*'
     paths-ignore:
       - "**.md"
       - "**.spec.js"
@@ -15,12 +16,27 @@ on:
       - "!.github/workflows/build.yml"
 
 jobs:
-  build:
+  create-release:  #1) Create the release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a Release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          draft: true
+
+  build: # 2) Build the release, for each OS, and upload the executables
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            CLEANUP_CMD: "npx rimraf release/!(*.deb|*.AppImage)"
+          - os: windows-latest
+            CLEANUP_CMD: "npx rimraf release\\!(*.exe)"
+          - os: macos-latest
+            CLEANUP_CMD: "npx rimraf release/!(*.dmg)"
 
     steps:
       - name: Checkout Code
@@ -39,9 +55,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload Artifact
+      - name: Cleanup release artefacts
+        run: ${{ matrix.CLEANUP_CMD }}
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: release_on_${{ matrix. os }}
-          path: release/
-          retention-days: 5
+          name: ${{ matrix.os }}
+          path: release
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: release/terative_*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true

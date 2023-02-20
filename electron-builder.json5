@@ -41,8 +41,7 @@
     "icon":"public/logo.png",
     "target": [
       "AppImage",
-      "deb",
-      "snap"
+      "deb"
     ],
     "artifactName": "terative_${version}.${ext}",
     "category": "Utility"
