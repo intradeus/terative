@@ -2,7 +2,7 @@
  * @see https://www.electron.build/configuration/configuration
  */
 {
-  "appId": "com.electron.${productName}",
+  "appId": "com.electron.terative",
   "asar": true,
   "icon": "public/favicon.ico",
   "directories": {
@@ -13,7 +13,7 @@
     "dist"
   ],
   "mac": {
-    "artifactName": "${productName}_${version}.${ext}",
+    "artifactName": "terative_${version}.${ext}",
     "target": [
       "dmg"
     ],
@@ -29,7 +29,7 @@
       }
     ],
     "icon":"public/logo.ico",
-    "artifactName": "${productName}_${version}.${ext}"
+    "artifactName": "terative_${version}.${ext}"
   },
   "nsis": {
     "oneClick": false,
@@ -44,13 +44,7 @@
       "deb",
       "snap"
     ],
-    "artifactName": "${productName}_${version}.${ext}",
-    "category": "Utility",
-    "desktop": {
-      "Name": "${productName}",
-      "GenericName": "${productName}",
-      "Comment": "${description}",
-      "StartupWMClass": "${productName}"
-    }
+    "artifactName": "terative_${version}.${ext}",
+    "category": "Utility"
   }
 }
