@@ -3,7 +3,9 @@
   "version": "5.0.0",
   "main": "dist-electron/main/index.js",
   "description": "A pretty cool application to generate PDF receipts and directly send them to your clients via email with exactly 8 clics.",
-  "author": "Lucas Roland",
+  "author": "Lucas Roland <lucasroland@me.com> (https://github.com/intradeus)",
+  "repository": "https://github.com/intradeus/terative",
+  "homepage":"https://github.com/intradeus/terative",
   "license": "MIT",
   "private": false,
   "debug": {
