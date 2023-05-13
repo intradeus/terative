@@ -1,17 +1,6 @@
-# electron-vite-vue
+# Terative v2 is a work in progress
+I am currently updating the stack of the application, but visit the [old_versions]([https://github.com/intradeus/terative/edit/old_versions](https://github.com/intradeus/terative/tree/old_versions) branch to see/install the v1.
 
-🥳 Really simple `Electron` + `Vue` + `Vite` boilerplate.
-
-[![GitHub Build](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml/badge.svg)](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml)
-
-## Features
-
-📦 Out of the box  
-🎯 Based on the official [template-vue-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts), less invasive  
-🌱 Extensible, really simple directory structure  
-💪 Support using Node.js API in Electron-Renderer  
-🔩 Support C/C++ native addons  
-🖥 It's easy to implement multiple windows  
 
 ## Quick Start
 
