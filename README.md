@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/intradeus/terative/blob/master/assets/logo.png?raw=true" width="120" height="120">
+<p align="center"><img src="https://github.com/intradeus/terative/blob/old_versions/assets/logo.png?raw=true" width="120" height="120">
 
 # **Terative - OLD VERSION**
 
@@ -23,16 +23,16 @@ If you use a Gmail account for the email, don't use your real password but inste
 
 # Screenshots :
 ### Main page : 
-![Main page](https://github.com/intradeus/terative/blob/master/assets/sc1.png?raw=true)
+![Main page](https://github.com/intradeus/terative/blob/old_versions/assets/sc1.png?raw=true)
 
 ### Settings :
-![Settings example](https://github.com/intradeus/terative/blob/master/assets/sc2.png?raw=true)
+![Settings example](https://github.com/intradeus/terative/blob/old_versions/assets/sc2.png?raw=true)
 
 ### Clients management : 
-![Clients management ](https://github.com/intradeus/terative/blob/master/assets/sc3.png?raw=true)
+![Clients management ](https://github.com/intradeus/terative/blob/old_versions/assets/sc3.png?raw=true)
 
 ### Receipt created
-![Receipt example](https://github.com/intradeus/terative/blob/master/assets/sc4.png?raw=true)
+![Receipt example](https://github.com/intradeus/terative/blob/old_versions/assets/sc4.png?raw=true)
 
 
 # Run it :
