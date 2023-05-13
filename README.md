@@ -1,5 +1,5 @@
 # Terative v2 is a work in progress
-I am currently updating the stack of the application, but visit the [old_versions]([https://github.com/intradeus/terative/edit/old_versions](https://github.com/intradeus/terative/tree/old_versions) branch to see/install the v1.
+I am currently updating the stack of the application, but visit the [old_versions](https://github.com/intradeus/terative/edit/old_versions) branch to see/install the v1.
 
 
 ## Quick Start
