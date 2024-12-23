@@ -1,21 +1,13 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
-    "jsx": "preserve",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true,
-    "noEmit": true,
-  },
-  "include": ["src/**/*.ts*"],
-  "exclude": ["node_modules", "dist", "lib"],
-  "references": [
-    { "path": "./tsconfig.node.json" }
-  ]
+	"extends": "./.nuxt/tsconfig.json",
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"strict": true
+	},
+	"include": [
+		".nuxt/nuxt.d.ts",
+		"env.d.ts",
+		"**/*"
+	]
 }

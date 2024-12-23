@@ -1,41 +1,49 @@
 {
-  "name": "terative",
-  "version": "5.0.7",
-  "main": "dist-electron/main/index.js",
-  "description": "A pretty cool application to generate PDF receipts and directly send them to your clients via email with exactly 8 clics.",
-  "author": "Lucas Roland <lucasroland@me.com> (https://github.com/intradeus)",
-  "repository": "https://github.com/intradeus/terative",
-  "homepage":"https://github.com/intradeus/terative",
-  "license": "MIT",
-  "private": false,
-  "debug": {
-    "env": {
-      "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
-    }
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build && electron-builder --publish never",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^4.0.0",
-    "autoprefixer": "^10.4.13",
-    "electron": "^22.0.3",
-    "electron-builder": "^23.6.0",
-    "naive-ui": "^2.34.3",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.7",
-    "typescript": "^4.9.4",
-    "vite": "^4.0.4",
-    "vite-plugin-electron": "^0.11.1",
-    "vite-plugin-electron-renderer": "^0.12.1",
-    "vue": "^3.2.45",
-    "vue-tsc": "^1.0.24"
-  },
-  "dependencies": {
-    "rxdb": "^14.0.4",
-    "rxjs": "^7.8.0",
-    "vue-router": "^4.1.6"
-  }
+	"name": "terative",
+	"type": "module",
+	"version": "1.0.0",
+	"private": true,
+	"packageManager": "pnpm@9.12.1",
+	"description": "Starter template for Nuxt 3 and Tauri 2",
+	"author": "Nicola Spadari",
+	"license": "MIT",
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preinstall": "npx only-allow pnpm",
+		"postinstall": "nuxt prepare",
+		"lint": "eslint . --fix",
+		"bump": "bumpp",
+		"tauri": "tauri",
+		"tauri:dev": "tauri dev",
+		"tauri:build": "tauri build",
+		"tauri:build:debug": "tauri build --debug"
+	},
+	"dependencies": {
+		"@nuxt/fonts": "^0.10.0",
+		"@tauri-apps/api": ">=2.0.2",
+		"@tauri-apps/plugin-fs": "^2.0.0",
+		"@tauri-apps/plugin-notification": "^2.0.0",
+		"@tauri-apps/plugin-os": "^2.0.0",
+		"@tauri-apps/plugin-shell": "^2.0.0"
+	},
+	"devDependencies": {
+		"@antfu/eslint-config": "^3.7.3",
+		"@nuxt/eslint": "^0.5.7",
+		"@nuxt/icon": "^1.5.5",
+		"@tauri-apps/cli": ">=2.0.2",
+		"@unocss/eslint-plugin": "^0.63.4",
+		"@unocss/nuxt": "^0.63.4",
+		"@vueuse/core": "^11.1.0",
+		"@vueuse/nuxt": "^11.1.0",
+		"bumpp": "^9.6.1",
+		"eslint": "9.12.0",
+		"nuxt": "^3.13.2",
+		"nuxt-svgo": "^4.0.6",
+		"sass": "^1.79.4",
+		"typescript": "^5.6.2"
+	}
 }

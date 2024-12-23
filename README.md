@@ -1,54 +1,63 @@
-# Terative v2 is a work in progress
-I am currently updating the stack of the application, but visit the [old_versions](https://github.com/intradeus/terative/edit/old_versions) branch to see/install the v1.
+<p align="center">
+    <img width="150" src="./src/public/logo.png" alt="logo">
+</p>
+<h1 align="center">Terative</h1>
 
+## Technologies run-down
 
-## Quick Start
+- Nuxt 3
+- Tauri 2
+- UnoCSS
+- Typescript
+- ESLint
+- Auto imports (for Tauri api too!)
 
-```sh
-npm create electron-vite
-```
+## Functionalities
 
-<!-- [![quick-start](https://asciinema.org/a/483731.svg)](https://asciinema.org/a/483731) -->
+- Run shell commands from the app
+- Send custom notifications to the client (remember to turn on/grant notifications in your computer settings!)
+- Display OS related informations
+- Show tray icon
+- Support all Nuxt functionalities (routing/layout/middleware/modules/etc...)
 
-![electron-vite-vue.gif](/public/electron-vite-vue.gif)
+## Setup
+
+  - Before running this app, you need to configure your environment with Rust. Take a look at the [Tauri docs](https://v2.tauri.app/start/prerequisites).
+  - This project enforces [pnpm](https://pnpm.io). In order to use another package manager you need to update `package.json` and `tauri.conf.json`
+  - The frontend runs on the usual port `3000` of Nuxt, the Tauri server uses the port `3001`. This settings are customizable in the `nuxt.config.ts` and `tauri.conf.json`.
+  - Once ready, follow these commands:
+
+  # install dependencies
+  $ pnpm install
+
+  # start the project
+  $ pnpm run tauri:dev
+  ```
+
+  This will run the Nuxt frontend and will launch the Tauri window.
+
+## Build
+
+  ```sh
+  $ pnpm run tauri:build
+  ```
+
+This command will generate the Nuxt static output and bundle the project under `src-tauri/target`.
 
 ## Debug
 
-![electron-vite-react-debug.gif](https://github.com/electron-vite/electron-vite-react/blob/main/public/electron-vite-react-debug.gif?raw=true)
+  ```sh
+  $ pnpm run tauri:build:debug
+  ```
 
-## Directory
+The same Tauri bundle will generate under `src-tauri/target`, but with the ability to open the console.
 
-```diff
-+ ├─┬ electron
-+ │ ├─┬ main
-+ │ │ └── index.ts    entry of Electron-Main
-+ │ └─┬ preload
-+ │   └── index.ts    entry of Preload-Scripts
-  ├─┬ src
-  │ └── main.ts       entry of Electron-Renderer
-  ├── index.html
-  ├── package.json
-  └── vite.config.ts
-```
+## Notes
 
-## Be aware
+- Tauri v2 brings some big refactors, such as packages names and permission management. New permissions have to be granted under `src-tauri/capabilities/main.json`
+- Tauri js functions are auto imported as-is with the help of a custom module. If another Tauri plugin is added, then the module has to be updated to support auto imports under `src/modules/tauri.ts`
+- As per documentation, Nuxt SSR must be disabled in order for Tauri to act as the backend. Still, all Nuxt goodies will be functional.
 
-🚨 By default, this template integrates Node.js in the Renderer process. If you don't need it, you just remove the option below. [Because it will modify the default config of Vite](https://github.com/electron-vite/vite-plugin-electron-renderer#config-presets-opinionated).
+## License
 
-```diff
-# vite.config.ts
-
-export default {
-  plugins: [
--   // Use Node.js API in the Renderer-process
--   renderer({
--     nodeIntegration: true,
--   }),
-  ],
-}
-```
-
-## FAQ
-
-- [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron-renderer#dependencies-vs-devdependencies)
-- [C/C++ addons, Node.js modules - Pre-Bundling](https://github.com/electron-vite/vite-plugin-electron-renderer#dependency-pre-bundling)
+MIT License © 2024-PRESENT [NicolaSpadari](https://github.com/NicolaSpadari)
