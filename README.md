@@ -60,4 +60,4 @@ The same Tauri bundle will generate under `src-tauri/target`, but with the abili
 
 ## License
 
-MIT License © 2024-PRESENT [NicolaSpadari](https://github.com/NicolaSpadari)
+MIT License © 2024-PRESENT [Intradeus](https://github.com/intradeus)

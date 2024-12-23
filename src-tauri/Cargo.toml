@@ -2,7 +2,7 @@
 name = "terative"
 version = "1.0.0"
 description = "Starter template for Nuxt 3 and Tauri 2"
-authors = [ "NicolaSpadari" ]
+authors = [ "Intradeus" ]
 license = "MIT"
 repository = "https://github.com/intradeus/terative"
 edition = "2021"
